@@ -1,2 +1,2 @@
-# reusable-arithmetic-library
+# Mundy Math
 Reusable Arithmetic Library written in C++. For SENG 560. Please refer to LICENSE.MD.
