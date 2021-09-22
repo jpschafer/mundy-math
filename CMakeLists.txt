@@ -5,7 +5,7 @@ project(mundy_math)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_library(mundy_math STATIC MundyMath.cpp)
+add_library(mundy_math_lib STATIC MundyMath.cpp)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -21,7 +21,7 @@ FetchContent_MakeAvailable(googletest)
 add_executable(mundy_math_tests Google_tests/MundyMathTests.cpp)
 
 # Link Mundy Math to Test Executable
-target_link_libraries(mundy_math_tests mundy_math)
+target_link_libraries(mundy_math_tests mundy_math_lib)
 target_link_libraries(mundy_math_tests gtest gtest_main)
 
 # Include GoogleTest CMake Commands
