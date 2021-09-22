@@ -40,4 +40,10 @@ TEST(testMathSuite, squareRootTest) {
 	EXPECT_EQ(10000, MundyMath::squareRoot(100000000));	
 }
 
+TEST(testMathSuite, powerTest) {
+	EXPECT_EQ(3, MundyMath::power(3, 1));
+	EXPECT_EQ(9, MundyMath::power(3, 2));
+	EXPECT_EQ(27, MundyMath::power(3, 3));
+	EXPECT_EQ(2147483647, MundyMath::power(2, 31));
+}
 
