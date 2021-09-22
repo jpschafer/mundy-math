@@ -30,7 +30,7 @@ double MundyMath::squareRoot(double a) {
 }
 
 double MundyMath::power(double a, double b) {
-	int c = 0;
+	int c = a;
 	for (int i; i < b; i++) {
 		c *= a
 	}
