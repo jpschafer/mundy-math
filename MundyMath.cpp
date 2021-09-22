@@ -23,8 +23,14 @@ double MundyMath::squareRoot(double a) {
 	}
 	
 	int result = 1;
+	int lastAcceptedResult = 1;
 	for (int i = 0; result <= a; i++) {
 		result=i*i;
+		
+		// Handle where a may go over for partial Square Roots, we are just going to floor.
+		if (result <= a) {
+			lastAcceptedResult = result;
+		}
 	}
 	return result;
 }
