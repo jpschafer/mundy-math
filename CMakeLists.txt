@@ -26,4 +26,4 @@ target_link_libraries(mundy_math_tests gtest gtest_main)
 include(GoogleTest)
 
 # Discover Tests for CTests to Execute
-gtest_add_tests(mundy_math_tests)
+gtest_discover_tests(mundy_math_tests)
