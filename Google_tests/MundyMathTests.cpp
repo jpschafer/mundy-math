@@ -32,10 +32,10 @@ TEST(testMathSuite, divisionTest) {
 }
 
 TEST(testMathSuite, squareRootTest) {
+	EXPECT_EQ(3, MundyMath::squareRoot(9));
 	EXPECT_EQ(7, MundyMath::squareRoot(49));
 	EXPECT_EQ(7, MundyMath::squareRoot(49.5));
-	EXPECT_EQ(7, MundyMath::divide(50));
-	EXPECT_EQ(3, MundyMath::divide(9));
+	EXPECT_EQ(7, MundyMath::squareRoot(50));
 	EXPECT_EQ(574, MundyMath::squareRoot(329476));
 	EXPECT_EQ(10000, MundyMath::squareRoot(100000000));	
 }
