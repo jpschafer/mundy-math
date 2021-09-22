@@ -22,5 +22,8 @@ add_executable(mundy_math_tests Google_tests/MundyMathTests.cpp)
 target_link_libraries(mundy_math_tests mundy_math)
 target_link_libraries(mundy_math_tests gtest gtest_main)
 
+# Include GoogleTest CMake Commands
+include(GoogleTest)
+
 # Discover Tests for CTests to Execute
 gtest_add_tests(mundy_math_tests)
