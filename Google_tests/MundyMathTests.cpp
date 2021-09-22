@@ -16,4 +16,11 @@ TEST(testMathSuite, subtractionTest) {
 	EXPECT_EQ(0, MundyMath::subtract(50, 50));
 	EXPECT_EQ(50, MundyMath::subtract(75, 25));
 	EXPECT_EQ(100, MundyMath::subtract(100.5, 0.5));
+	EXPECT_EQ(100.5, MundyMath::subtract(100, 0.5));
+}
+
+TEST(testMathSuite, multiplicationTest) {
+	EXPECT_EQ(2500, MundyMath::multiply(50, 50));
+	EXPECT_EQ(1875, MundyMath::multiply(75, 25));
+	EXPECT_EQ(50.25, MundyMath::multiply(100.5, 0.5));
 }
