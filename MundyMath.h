@@ -35,6 +35,22 @@
 		 * @return Result of Division
 		 */
 		static double divide(double a, double b);
+		
+		/**
+		 * Calculates Square Root of operand
+		 * @param Operand
+		 * @return Result of Square Root
+		 */
+		static double squareRoot(double a);
+		
+		/**
+		 * Exponentiates the given Operand with the given Power
+		 * @param a Operand
+		 * @param b Power to Exponentiate
+		 * @return Result of Square Root
+		 */
+		static double power(double a, double b);
+		
 	};
 
 #endif //MUNDY_MATH_LIBRARY_H
