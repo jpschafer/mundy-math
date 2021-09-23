@@ -28,15 +28,15 @@ public:
 		}
 		
 		int remainder; 
-		long octal = 0, i = 1;
+		long binary = 0, i = 1;
    
 		while(n != 0) {
 			remainder = n%2;
 			n = n/2;
-			octal = octal + (remainder*i);
+			binary = binary + (remainder*i);
 			i = i*10;
 		}
-		return to_string(octal);
+		return to_string(binary);
 	};
 	
 	string toOctal() {
