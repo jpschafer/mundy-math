@@ -82,6 +82,7 @@ TEST(testMathSuite, conversionTest) {
 	Result<int> resultBinary("0b1111000"); // 120
 	Result<int> resultOctal("0171"); // 121
 	Result<int> resultHexadecimal("0x7b"); // 123
+	Result<int> resultReuse(resultBinary.toBinary());
 
 	// Int
 	EXPECT_EQ(125, resultInt.getResult());
@@ -122,14 +123,24 @@ TEST(testMathSuite, conversionTest) {
 	EXPECT_EQ("0b1111011", resultHexadecimal.toBinary());
 	EXPECT_EQ("0173", resultHexadecimal.toOctal());
 	EXPECT_EQ("0x7b", resultHexadecimal.toHexadecimal());
+
+	// Reused Value
+	EXPECT_EQ(120, resultReuse.getResult());
+	EXPECT_EQ(120, resultReuse.toInteger());
+	EXPECT_EQ(120.0, resultReuse.toDouble());
+	EXPECT_EQ("0b1111000", resultReuse.toBinary());
+	EXPECT_EQ("0170", resultReuse.toOctal());
+	EXPECT_EQ("0x78", resultReuse.toHexadecimal());
 }
 
 TEST(testMathSuite, negativeConversionTests) {
 	Result resultInt(-125);
 	Result resultDouble(-125.5);
 	Result<int> resultBinary("-0b1111000"); // 120
-	//Result<int> resultOctal("-0171"); // 121
+	Result<int> resultOctal("-0171"); // 121
 	Result<int> resultHexadecimal("-0x7b"); // 123
+	Result<int> resultReuse(resultBinary.toBinary());
+
 
 	// Int
 	EXPECT_EQ(-125, resultInt.getResult());
@@ -149,20 +160,20 @@ TEST(testMathSuite, negativeConversionTests) {
 
 	// Binary
     EXPECT_EQ(-120, resultBinary.getResult());
-//	EXPECT_EQ(120, resultBinary.toInteger());
-//	EXPECT_EQ(120.0, resultBinary.toDouble());
-//	EXPECT_EQ("0b1111000", resultBinary.toBinary());
-//	EXPECT_EQ("0170", resultBinary.toOctal());
-//	EXPECT_EQ("0x78", resultBinary.toHexadecimal());
-//
-//	// Octal
-//	EXPECT_EQ(121, resultOctal.getResult());
-//	EXPECT_EQ(121, resultOctal.toInteger());
-//	EXPECT_EQ(121.0, resultOctal.toDouble());
-//	EXPECT_EQ("0b1111001", resultOctal.toBinary());
-//	EXPECT_EQ("0171", resultOctal.toOctal());
-//	EXPECT_EQ("0x79", resultOctal.toHexadecimal());
-//
+	EXPECT_EQ(-120, resultBinary.toInteger());
+	EXPECT_EQ(-120.0, resultBinary.toDouble());
+	EXPECT_EQ("-0b1111000", resultBinary.toBinary());
+	EXPECT_EQ("-0170", resultBinary.toOctal());
+	EXPECT_EQ("-0x78", resultBinary.toHexadecimal());
+
+	// Octal
+	EXPECT_EQ(-121, resultOctal.getResult());
+	EXPECT_EQ(-121, resultOctal.toInteger());
+	EXPECT_EQ(-121.0, resultOctal.toDouble());
+	EXPECT_EQ("-0b1111001", resultOctal.toBinary());
+	EXPECT_EQ("-0171", resultOctal.toOctal());
+	EXPECT_EQ("-0x79", resultOctal.toHexadecimal());
+
 	// Hexadecimal
 	EXPECT_EQ(-123, resultHexadecimal.getResult());
 	EXPECT_EQ(-123, resultHexadecimal.toInteger());
@@ -171,5 +182,13 @@ TEST(testMathSuite, negativeConversionTests) {
 	EXPECT_EQ("-0173", resultHexadecimal.toOctal());
 	EXPECT_EQ("-0x7b", resultHexadecimal.toHexadecimal());
 
+
+	// Reused Value
+	EXPECT_EQ(-120, resultReuse.getResult());
+	EXPECT_EQ(-120, resultReuse.toInteger());
+	EXPECT_EQ(-120.0, resultReuse.toDouble());
+	EXPECT_EQ("-0b1111000", resultReuse.toBinary());
+	EXPECT_EQ("-0170", resultReuse.toOctal());
+	EXPECT_EQ("-0x78", resultReuse.toHexadecimal());
 
 }
