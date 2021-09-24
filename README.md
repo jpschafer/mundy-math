@@ -115,9 +115,10 @@ All Octal/Binary/Hexadecimal numbers assume to only represent integers, if you w
 # Limitations/Caveats
 - Exponentiation only support integer positive and minus based powers, partial powers are not supported. 
 - The Square Root function will provide a floored valued for the square root of a double or integer that does not create a integer result.  
+- Two's Complement is not actively supported due to issues with C++ implementations not guaranteeing it (it's not required by the C++ standard), do not try to use two's complement representation of numbers for conversion, always provide a minus sign with your number, otherwise you may get unexpected results. for example instead of 0xffffff83 please use -07xd
 
 # Design Limitations
-- Two's Complement is not actively supported due to issues with C++ implementations not guaranteeing it (it's not required by the C++ standard), do not try to use two's complement representation of numbers for conversion, always provide a minus sign with your number, otherwise you may get unexpected results. 
+
 
 - Templates, unfortunately when trying to support a myriad of output formats, like most OO based languages, it's not possible to overload based on the output type, so defining a third template for the output value doesn't work as you can't determine the code at compile time based on the run-time return of a math operation, causing me to have to permutate out all the possible combinations and specifying what I expect the output format to be based on precision. One way this could have been resolved is by enforcing precision to be based on one of the operands, however that is very implementation specific and not ideal in any scenario. It makes me wonder when operands are implemented in compilers, what code they had to write to determine precision conversion without writing out every case. I was able to make input combinations possible with templates, just not output combinations based on assumptions. I possibly could have wrapped my work into a struct, but I am not sure if that would have just added complexity. 
 
