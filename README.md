@@ -131,7 +131,7 @@ All Octal/Binary/Hexadecimal numbers assume to only represent integers, if you w
 - Exponentiation only support integer positive and minus based powers, partial powers are not supported. 
 - The Square Root function will provide a floored valued for the square root of a double or integer that does not create a integer result.  
 - Two's Complement is not actively supported due to issues with C++ implementations not guaranteeing it (it's not required by the C++ standard), do not try to use two's complement representation of numbers for conversion, always provide a minus sign with your number, otherwise you may get unexpected results. for example instead of 0xffffff83 please use -07xd
-
+- Divide by Zero will cause program to crash, you need to implement proper signal handling for this use case if its possible this may occurr. 
 # Design Limitations
 
 
