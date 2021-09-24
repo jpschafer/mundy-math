@@ -43,15 +43,30 @@ Google tests are auto-discovered in the CMakeLists definition for CTests to run 
 
 # How to Use
 
+If you want to see a project that uses this library, go to:
+[https://github.com/jpschafer/fluffy-succotash](https://github.com/jpschafer/fluffy-succotash)
+
+Otherwise, read below on how to use.
+
 First you need to add the following to your CMakeLists to include the project:
 ```
+# Fetch the Repository
 include(FetchContent)
 FetchContent_Declare(
         mundy_math
         # Specify the commit you depend on and update it regularly.
         URL https://github.com/jpschafer/mundy-math/archive/refs/heads/main.zip
 )
+
+# Make Repository Available to CMake
 FetchContent_MakeAvailable(mundy_math)
+
+# Now simply link against  as needed. Eg
+add_executable(<your_app_name> main.cpp)
+
+# Link Mundy Math to Executable
+target_link_libraries(<your_app_name> mundy_math_lib)
+target_include_directories(fluffy_succotash_app PUBLIC ${mundy_math_SOURCE_DIR})
 ```
 
 The MundyMath Library can then be easily consumed by including it into your cpp class:
@@ -116,7 +131,7 @@ All Octal/Binary/Hexadecimal numbers assume to only represent integers, if you w
 - Exponentiation only support integer positive and minus based powers, partial powers are not supported. 
 - The Square Root function will provide a floored valued for the square root of a double or integer that does not create a integer result.  
 - Two's Complement is not actively supported due to issues with C++ implementations not guaranteeing it (it's not required by the C++ standard), do not try to use two's complement representation of numbers for conversion, always provide a minus sign with your number, otherwise you may get unexpected results. for example instead of 0xffffff83 please use -07xd
-
+- Divide by Zero will cause program to crash, you need to implement proper signal handling for this use case if its possible this may occur. 
 # Design Limitations
 
 
