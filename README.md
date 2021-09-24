@@ -1,6 +1,5 @@
 ![CMake Status](https://github.com/jpschafer/mundy-math/actions/workflows/cmake.yml/badge.svg)
 
-
 # Mundy Math
 Reusable Arithmetic Library written in C++. For SENG 560. This library provides the following functions:
 
@@ -44,7 +43,18 @@ Google tests are auto-discovered in the CMakeLists definition for CTests to run 
 
 # How to Use
 
-The MundyMath Library can be easily consumed by including it into your cpp class:
+First you need to add the following to your CMakeLists to include the project:
+```
+include(FetchContent)
+FetchContent_Declare(
+        mundy_math
+        # Specify the commit you depend on and update it regularly.
+        URL https://github.com/jpschafer/mundy-math/archive/refs/heads/main.zip
+)
+FetchContent_MakeAvailable(mundy_math)
+```
+
+The MundyMath Library can then be easily consumed by including it into your cpp class:
 
 ```
 #include "MundyMath.h"
@@ -61,12 +71,27 @@ Once included you can easily start running some methods, the formats for the str
 - octal: 0111111 (0<octal_num>)
 - Hexadecimal: 0x111111 (0x<hex_num>)
 
-See below for examples:
+## Basic Operations
+
+Basic Operations can be done interchangeably on all type combinations of what are supported:
 
 ```
-MundyMath::add("0b00010100", "0b00010100").getResult()
-MundyMath::add("0xA", "0xA").getResult()
+MundyMath::add("0b00010100", "0b00010100")
+MundyMath::add("0xA", "0xA")
 MundyMath::subtract("012", "012")
+```
+
+
+All Methods return a "Result" Object back, which provides the following methods:
+- getResult() - Returns the Result in its internally stored format back (string formats are converted internally to integer)
+- getBinary() - Returns the Result in a Binary String
+- getOctal() - Returns the Result in an Octal String
+- getHexadecimal() - Returns the Result in a Hexadecimal String
+
+You can either store the reference to the object or chain calls to the various output formats like so. 
+```
+Result result = MundyMath::add(12, 12);
+int myInt = MundyMath::add(12, 12).getResult();
 ```
 
 Note that inputted string values are converted to integers for calculation purposes and stored internally that way in the Result object (unless you directly instantiate the result and pass the string yourself), meaning .getResult() will not give you back the stringified form but the actual C++ simple integer. 
