@@ -2,6 +2,7 @@
 #define RESULT_H
 
 #include <string>
+#include <sstream>
 #include <type_traits>
 
 using namespace std;
@@ -36,7 +37,7 @@ public:
 			binary = binary + (remainder*i);
 			i = i*10;
 		}
-		return to_string(binary);
+		return "0b" + to_string(binary);
 	};
 	
 	string toOctal() {
@@ -55,7 +56,17 @@ public:
 			octal = octal + (remainder*i);
 			i = i*10;
 		}
-		return to_string(octal);
+		return "0" + to_string(octal);
+	};
+	
+	string toHexadecimal() {
+		// Convert to int first!
+		int a = originalResult
+		std::stringstream stream;
+		stream << "0x" 
+		//<< std::setfill ('0') << std::setw(sizeof(T)*2) 
+		<< std::hex << a;
+  		return stream.str();
 	};
 	
 	int toInteger() {
