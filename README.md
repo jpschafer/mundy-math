@@ -37,3 +37,37 @@ This project uses Google Tests as its C++ unit testing framework. Tests are done
 Google tests are auto-discovered in the CMakeLists definition for CTests to run as a part of the build and return results. This entire testing process is also managed as a CI/CD pipeline. You can check the Readme here at the top to see if the build is currently passing tests and is compileable. 
 
 # How to Use
+
+The MundyMath Library can be easily consumed by including it into your cpp class:
+
+```
+#include "MundyMath.h"
+```
+
+If you have folders deeper than the root of your project you may have to do the following:
+
+```
+#include "../MundyMath.h"
+```
+
+Once included you can easily start running some methods, the formats for the string types are as follows:
+- binary: 0b111111(0b<binary_num>)
+- octal: 0111111 (0<octal_num>)
+- Hexadecimal: 0x111111 (0x<hex_num>)
+
+See below for examples:
+
+```
+MundyMath::add("0b00010100", "0b00010100").getResult()
+MundyMath::add("0xA", "0xA").getResult()
+MundyMath::subtract("012", "012")
+```
+
+Note that inputted string values are converted to integers for calculation purposes and stored internally that way in the Result object (unless you directly instantiate the result and pass the string yourself), meaning .getResult() will not give you back the stringified form but the actual C++ simple integer. 
+
+All Octal/Binary/Hexadecimal numbers assume to only represent integers, if you want to use doubles you need to directly use the C++ doubles format, the stringified versions are essentially just another way to represent C++ integers (It does seem kind of silly to be wrapping up a binary number in ASCII doesn't it?)
+
+
+# Limitations/Caveats
+- Exponentiation only support integer positive and minus based powers, partial powers are not supported. 
+- The Square Root function will provide a floored valued for the square root of a double or integer that does not create a integer result.  
