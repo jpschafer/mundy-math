@@ -43,6 +43,11 @@ Google tests are auto-discovered in the CMakeLists definition for CTests to run 
 
 # How to Use
 
+If you want to see a project that uses this library, go to:
+[https://github.com/jpschafer/fluffy-succotash](https://github.com/jpschafer/fluffy-succotash)
+
+Otherwise, read below on how to use.
+
 First you need to add the following to your CMakeLists to include the project:
 ```
 # Fetch the Repository
