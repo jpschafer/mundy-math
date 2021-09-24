@@ -33,25 +33,25 @@ TEST(testMathSuite, additionTest) {
 	EXPECT_EQ( 40, MundyMath::add(20, "0b00010100").getResult());
 }
 
-//
-//TEST(testMathSuite, subtractionTest) {
-//	EXPECT_EQ(0, MundyMath::subtract(50, 50));
-//	EXPECT_EQ(50, MundyMath::subtract(75, 25));
-//	EXPECT_EQ(100, MundyMath::subtract(100.5, 0.5));
-//	EXPECT_EQ(99.5, MundyMath::subtract(100, 0.5));
-//}
-//
-//TEST(testMathSuite, multiplicationTest) {
-//	EXPECT_EQ(2500, MundyMath::multiply(50, 50));
-//	EXPECT_EQ(1875, MundyMath::multiply(75, 25));
-//	EXPECT_EQ(50.25, MundyMath::multiply(100.5, 0.5));
-//}
-//
-//TEST(testMathSuite, divisionTest) {
-//	EXPECT_EQ(1, MundyMath::divide(50, 50));
-//	EXPECT_EQ(3, MundyMath::divide(75, 25));
-//	EXPECT_EQ(201, MundyMath::divide(100.5, 0.5));
-//}
+TEST(testMathSuite, subtractionTest) {
+	EXPECT_EQ(0, MundyMath::subtract(50, 50).getResult());
+	EXPECT_EQ(50, MundyMath::subtract(75, 25).getResult());
+	EXPECT_EQ(100, MundyMath::subtract(100.5, 0.5).getResult());
+	EXPECT_EQ(99.5, MundyMath::subtract(100, 0.5).getResult());
+}
+
+TEST(testMathSuite, multiplicationTest) {
+	EXPECT_EQ(2500, MundyMath::multiply(50, 50).getResult());
+	EXPECT_EQ(1875, MundyMath::multiply(75, 25).getResult());
+	EXPECT_EQ(50.25, MundyMath::multiply(100.5, 0.5).getResult());
+}
+
+TEST(testMathSuite, divisionTest) {
+	EXPECT_EQ(1, MundyMath::divide(50, 50).getResult());
+	EXPECT_EQ(3, MundyMath::divide(75, 25).getResult());
+	EXPECT_EQ(201, MundyMath::divide(100.5, 0.5).getResult());
+	EXPECT_EQ(50.025, MundyMath::divide(25.0125, 0.5).getResult());
+}
 
 //TEST(testMathSuite, squareRootTest) {
 //	EXPECT_EQ(3, MundyMath::squareRoot(9));

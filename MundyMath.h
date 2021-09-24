@@ -31,6 +31,36 @@ const static string BINARY_PREFIX = "0b";
 		static Result<int> add(string a, int b);
 		static Result<double> add(string a, double b);
 
+		static Result<int> subtract(int a, int b);
+		static Result<double> subtract(int a, double b);
+		static Result<int> subtract(int a, string b);
+		static Result<double> subtract(double a, double b);
+		static Result<double> subtract(double a, int b);
+		static Result<double> subtract(double a, string b);
+		static Result<int> subtract(string a, string b);
+		static Result<int> subtract(string a, int b);
+		static Result<double> subtract(string a, double b);
+
+		static Result<int> multiply(int a, int b);
+		static Result<double> multiply(int a, double b);
+		static Result<int> multiply(int a, string b);
+		static Result<double> multiply(double a, double b);
+		static Result<double> multiply(double a, int b);
+		static Result<double> multiply(double a, string b);
+		static Result<int> multiply(string a, string b);
+		static Result<int> multiply(string a, int b);
+		static Result<double> multiply(string a, double b);
+
+		static Result<int> divide(int a, int b);
+		static Result<double> divide(int a, double b);
+		static Result<int> divide(int a, string b);
+		static Result<double> divide(double a, double b);
+		static Result<double> divide(double a, int b);
+		static Result<double> divide(double a, string b);
+		static Result<int> divide(string a, string b);
+		static Result<int> divide(string a, int b);
+		static Result<double> divide(string a, double b);
+
 		static int convertToInteger(string a);
 
 //		/**
