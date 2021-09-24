@@ -214,17 +214,56 @@ double MundyMath::squareRoot(double a) {
 
 		// Handle where a may go over for partial Square Roots, we are just going to floor.
 		if (result <= a) {
-			lastAcceptedResult = result;
+			lastAcceptedResult = i;
 		}
 	}
-	return result;
+	return lastAcceptedResult;
 }
 
-//double MundyMath::power(double a, double b) {
-//	int c = a;
-//	for (int i; i < b; i++) {
-//		c *= a;
-//	}
-//	return c;
-//}
+double MundyMath::power(double a, int b) {
+	double c = a;
+	for (int i = 1; i < abs(b); i++) {
+		c *= a;
+	}
+
+	if (b < 0) {
+		return 1/c;
+	} else {
+		return c;
+	}
+}
+
+int MundyMath::squareRoot(int a) {
+
+	if (a == 0 || a == 1) {
+		return a;
+	}
+
+	int result = 1;
+	int lastAcceptedResult = 1;
+	for (int i = 0; result <= a; i++) {
+		result=i*i;
+
+		// Handle where a may go over for partial Square Roots, we are just going to floor.
+		if (result <= a) {
+			lastAcceptedResult = i;
+		}
+	}
+	return lastAcceptedResult;
+}
+
+int MundyMath::power(int a, int b) {
+	int c = a;
+
+	for (int i = 1; i < abs(b); i++) {
+		c *= a;
+	}
+
+	if (b < 0) {
+		std::cout << c;
+		return 1/c;
+	} else {
+		return c;
+	}
+}
 

@@ -93,6 +93,7 @@ const static string BINARY_PREFIX = "0b";
 
 		/**
 		 * Exponentiates the given Operand with the given Power
+		 * Only supports positive and negative integer powers
 		 * @param a Operand
 		 * @param b Power to Exponentiate
 		 * @return Result of Square Root

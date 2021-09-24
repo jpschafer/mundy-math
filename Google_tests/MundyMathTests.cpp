@@ -53,19 +53,25 @@ TEST(testMathSuite, divisionTest) {
 	EXPECT_EQ(50.025, MundyMath::divide(25.0125, 0.5).getResult());
 }
 
-//TEST(testMathSuite, squareRootTest) {
-//	EXPECT_EQ(3, MundyMath::squareRoot(9));
-//	EXPECT_EQ(7, MundyMath::squareRoot(49));
-//	EXPECT_EQ(7, MundyMath::squareRoot(49.5));
-//	EXPECT_EQ(7, MundyMath::squareRoot(50));
-//	EXPECT_EQ(574, MundyMath::squareRoot(329476));
-//	EXPECT_EQ(10000, MundyMath::squareRoot(100000000));
-//}
-//
-//TEST(testMathSuite, powerTest) {
-//	EXPECT_EQ(3, MundyMath::power(3, 1));
-//	EXPECT_EQ(9, MundyMath::power(3, 2));
-//	EXPECT_EQ(27, MundyMath::power(3, 3));
-//	EXPECT_EQ(2147483647, MundyMath::power(2, 31));
-//}
+TEST(testMathSuite, squareRootTest) {
+	EXPECT_EQ(3, MundyMath::squareRoot(9));
+	EXPECT_EQ(7, MundyMath::squareRoot(49));
+	EXPECT_EQ(7, MundyMath::squareRoot(49.5));
+	EXPECT_EQ(7, MundyMath::squareRoot(50));
+	EXPECT_EQ(574, MundyMath::squareRoot(329476));
+	EXPECT_EQ(10000, MundyMath::squareRoot(100000000));	
+}
+
+TEST(testMathSuite, powerTest) {
+	EXPECT_EQ(3, MundyMath::power(3, 1));
+	EXPECT_EQ(9, MundyMath::power(3, 2));
+	EXPECT_EQ(27, MundyMath::power(3, 3));
+	EXPECT_EQ(1073741824, MundyMath::power(2, 30));
+	EXPECT_EQ(1073741824, MundyMath::power(2.0, 30));
+	EXPECT_EQ(244.140625, MundyMath::power(2.5, 6));
+	EXPECT_EQ(0.5, MundyMath::power(2.0, -1));
+	EXPECT_EQ(1, MundyMath::power(2, -1));
+	EXPECT_EQ(0.0625, MundyMath::power(2.0, -4));
+	EXPECT_EQ(0, MundyMath::power(2, -4));
+}
 
