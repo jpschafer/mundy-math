@@ -201,25 +201,25 @@ int MundyMath::convertToInteger(string a) {
 		return std::stoi(a, nullptr, 0);
 	}
 }
-//double MundyMath::squareRoot(double a) {
-//
-//	if (a == 0 || a == 1) {
-//		return a;
-//	}
-//
-//	int result = 1;
-//	int lastAcceptedResult = 1;
-//	for (int i = 0; result <= a; i++) {
-//		result=i*i;
-//
-//		// Handle where a may go over for partial Square Roots, we are just going to floor.
-//		if (result <= a) {
-//			lastAcceptedResult = result;
-//		}
-//	}
-//	return result;
-//}
-//
+double MundyMath::squareRoot(double a) {
+
+	if (a == 0 || a == 1) {
+		return a;
+	}
+
+	int result = 1;
+	int lastAcceptedResult = 1;
+	for (int i = 0; result <= a; i++) {
+		result=i*i;
+
+		// Handle where a may go over for partial Square Roots, we are just going to floor.
+		if (result <= a) {
+			lastAcceptedResult = result;
+		}
+	}
+	return result;
+}
+
 //double MundyMath::power(double a, double b) {
 //	int c = a;
 //	for (int i; i < b; i++) {

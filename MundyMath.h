@@ -31,6 +31,12 @@ const static string BINARY_PREFIX = "0b";
 		static Result<int> add(string a, int b);
 		static Result<double> add(string a, double b);
 
+		/**
+		 * Subtracts two double operands
+		 * @param a First Operand
+		 * @param b Second Operand
+		 * @return Result of Subtraction
+		 */
 		static Result<int> subtract(int a, int b);
 		static Result<double> subtract(int a, double b);
 		static Result<int> subtract(int a, string b);
@@ -41,6 +47,13 @@ const static string BINARY_PREFIX = "0b";
 		static Result<int> subtract(string a, int b);
 		static Result<double> subtract(string a, double b);
 
+
+		/**
+		 * Multiplies two double operands.
+		 * @param a First Operand
+		 * @param b Second Operand
+		 * @return Result of Multiplication
+		 */
 		static Result<int> multiply(int a, int b);
 		static Result<double> multiply(int a, double b);
 		static Result<int> multiply(int a, string b);
@@ -51,6 +64,13 @@ const static string BINARY_PREFIX = "0b";
 		static Result<int> multiply(string a, int b);
 		static Result<double> multiply(string a, double b);
 
+
+		/**
+		 * Divides two double operands.
+		 * @param a First Operand
+		 * @param b Second Operand
+		 * @return Result of Division
+		 */
 		static Result<int> divide(int a, int b);
 		static Result<double> divide(int a, double b);
 		static Result<int> divide(int a, string b);
@@ -62,92 +82,24 @@ const static string BINARY_PREFIX = "0b";
 		static Result<double> divide(string a, double b);
 
 		static int convertToInteger(string a);
+		/**
+		 * Calculates Square Root of operand
+		 * @param Operand
+		 * @return Result of Square Root
+		 */
+		static Result<int> squareRoot(int a);
+		static Result<double> squareRoot(double a);
+		static Result<int> squareRoot(string a);
 
-//		/**
-//		 * Subtracts two double operands
-//		 * @param a First Operand
-//		 * @param b Second Operand
-//		 * @return Result of Subtraction
-//		 */
-//		template <class T, class T2, class T3>
-//		static Result<T3> subtract(T a, T2 b) {
-//			T num1 = a;
-//			T2 num2 = b;
-//
-//			if (std::is_same<T, string>::value) {
-//				num1 = std::stoi(a, nullptr, 0);
-//			}
-//
-//			if (std::is_same<T2, string>::value) {
-//				num2 = num1 = std::stoi(a, nullptr, 0);
-//			}
-//
-//			Result result = new Result<T3>(a - b);
-//			return result;
-//		}
-//
-//		/**
-//		 * Multiplies two double operands.
-//		 * @param a First Operand
-//		 * @param b Second Operand
-//		 * @return Result of Multiplication
-//		 */
-//		template <class T, class T2, class T3>
-//		static Result<T3> multiply(T a, T2 b) {
-//			T num1 = a;
-//			T2 num2 = b;
-//
-//			if (std::is_same<T, string>::value) {
-//				num1 = std::stoi(a, nullptr, 0);
-//			}
-//
-//			if (std::is_same<T2, string>::value) {
-//				num2 = num1 = std::stoi(a, nullptr, 0);
-//			}
-//
-//			Result result = new Result<T3>(a * b);
-//			return result;
-//		}
-//
-//		/**
-//		 * Divides two double operands.
-//		 * @param a First Operand
-//		 * @param b Second Operand
-//		 * @return Result of Division
-//		 */
-//		template <class T, class T2, class T3>
-//		static Result<T3> divide(T a, T2 b) {
-//			T num1 = a;
-//			T2 num2 = b;
-//
-//			if (std::is_same<T, string>::value) {
-//				num1 = std::stoi(a, nullptr, 0);
-//			}
-//
-//			if (std::is_same<T2, string>::value) {
-//				num2 = num1 = std::stoi(a, nullptr, 0);
-//			}
-//
-//			Result result = new Result<T3>(a / b);
-//			return result;
-//		}
-//
-////		/**
-////		 * Calculates Square Root of operand
-////		 * @param Operand
-////		 * @return Result of Square Root
-////		 */
-////		template <class T, class T2, class T3>
-////		static double squareRoot(T a);
-////
-////		/**
-//		 * Exponentiates the given Operand with the given Power
-//		 * @param a Operand
-//		 * @param b Power to Exponentiate
-//		 * @return Result of Square Root
-//		 */
-//		template <class T, class T2, class T3>
-//		static double power(T a, int b);
+		/**
+		 * Exponentiates the given Operand with the given Power
+		 * @param a Operand
+		 * @param b Power to Exponentiate
+		 * @return Result of Square Root
+		 */
+		static Result<int> power(int a, int b);
+		static Result<double> power(double a, int b);
+		static Result<int> power(string a, int b);
 		
 	};
 
