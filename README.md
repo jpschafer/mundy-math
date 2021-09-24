@@ -19,6 +19,12 @@ It also supports the following types interchangeably:
 - octal (string based)
 - hexadecimal (string based)
 
+# Requirements
+- C++17 Standards Supported Compiler
+  - GCC is recommended for Unix Based Systems (Mac, Linux)
+  - MinGW is recommended for Windows
+- [CMake](https://cmake.org) 
+- 
 # How is it Reusable?
 This project is made reusable in the way that it is consumed by another project. Instead of compiling the .a library and providing different versions of that. It is recommended that this project is consumed via the use of FetchContent() in a CMakeList, making it compiled with your project as a static library on demand, so it will run on any environment you are using. This also makes it easy to pull new updates as you can either just reference the main zip download off of github to always get bleeding edge updates, or you can specify a specific hash like so:
 
