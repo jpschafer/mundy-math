@@ -76,11 +76,24 @@ Once included you can easily start running some methods, the formats for the str
 Basic Operations can be done interchangeably on all type combinations of what are supported:
 
 ```
-MundyMath::add("0b00010100", "0b00010100")
-MundyMath::add("0xA", "0xA")
-MundyMath::subtract("012", "012")
+MundyMath::add("0b00010100", "0b00010100");
+MundyMath::add("0xA", "0xA");
+MundyMath::subtract("012", "012");
+MundyMath::multiply(5, 5);
+MundyMath::divide(5, 5);
 ```
 
+## Square Root
+
+Square Root function will return the square root of the given integer or double. Results are floored to the nearest integer:
+
+```
+MundyMath::squareRoot(49)
+```
+
+## Exponentiation
+
+The power function will bring a number to the power given, including negatives, both ints and doubles are supported, if a negative power is used that creates a decimal number (eg. 0.5) then that number will be floored if the input value was an integer, however the double representing the decimal value will be given if a double is used (Depending on how large, you will run the risk of losing accuracy with doubles). 
 
 All Methods return a "Result" Object back, which provides the following methods:
 - getResult() - Returns the Result in its internally stored format back (string formats are converted internally to integer)
@@ -102,3 +115,8 @@ All Octal/Binary/Hexadecimal numbers assume to only represent integers, if you w
 # Limitations/Caveats
 - Exponentiation only support integer positive and minus based powers, partial powers are not supported. 
 - The Square Root function will provide a floored valued for the square root of a double or integer that does not create a integer result.  
+
+# Design Limitations
+- Templates, unfortunately when trying to support a myriad of output formats, like most OO based languages, it's not possible to overload based on the output type, so defining a third template for the output value doesn't work as you can't determine the code at compile time based on the run-time return of a math operation, causing me to have to permutate out all the possible combinations and specifying what I expect the output format to be based on precision. One way this could have been resolved is by enforcing precision to be based on one of the operands, however that is very implementation specific and not ideal in any scenario. It makes me wonder when operands are implemented in compilers, what code they had to write to determine precision conversion without writing out every case. 
+- Basically without the above resolved, if we wish to add more non-string types, it can potentially get hopelessly complicated, part of this issue is due to my very new familiarity with C++, it has a lot of the same C constructs I am familiar with, but I am wholly new to its OO paradigm. 
+
