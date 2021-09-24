@@ -194,14 +194,14 @@ int MundyMath::convertToInteger(string a) {
 	if (a[0] == '0' && a[1] == 'b') {
 		a.erase(0, 2);
 		a.erase(0, min(a.find_first_not_of('0'), a.size()-1));
-		cout << a << "suh";
 
 		return std::stoi(a, 0, 2);
 	} else {
 		return std::stoi(a, nullptr, 0);
 	}
 }
-double MundyMath::squareRoot(double a) {
+
+Result<double> MundyMath::squareRoot(double a) {
 
 	if (a == 0 || a == 1) {
 		return a;
@@ -217,42 +217,12 @@ double MundyMath::squareRoot(double a) {
 			lastAcceptedResult = i;
 		}
 	}
-	return lastAcceptedResult;
+	Result<double> wrappedResult(lastAcceptedResult);
+	return wrappedResult;
 }
 
-double MundyMath::power(double a, int b) {
-	double c = a;
-	for (int i = 1; i < abs(b); i++) {
-		c *= a;
-	}
 
-	if (b < 0) {
-		return 1/c;
-	} else {
-		return c;
-	}
-}
-
-int MundyMath::squareRoot(int a) {
-
-	if (a == 0 || a == 1) {
-		return a;
-	}
-
-	int result = 1;
-	int lastAcceptedResult = 1;
-	for (int i = 0; result <= a; i++) {
-		result=i*i;
-
-		// Handle where a may go over for partial Square Roots, we are just going to floor.
-		if (result <= a) {
-			lastAcceptedResult = i;
-		}
-	}
-	return lastAcceptedResult;
-}
-
-int MundyMath::power(int a, int b) {
+Result<int> MundyMath::power(int a, int b) {
 	int c = a;
 
 	for (int i = 1; i < abs(b); i++) {
@@ -260,10 +230,47 @@ int MundyMath::power(int a, int b) {
 	}
 
 	if (b < 0) {
-		std::cout << c;
-		return 1/c;
+		Result<int> result(1/c);
+		return result;
 	} else {
-		return c;
+
+		Result<int> result(c);
+		return result;
 	}
+}
+
+Result<double> MundyMath::power(double a, int b) {
+	double c = a;
+	for (int i = 1; i < abs(b); i++) {
+		c *= a;
+	}
+
+	if (b < 0) {
+		Result<double> result(1/c);
+		return result;
+	} else {
+		Result<double> result(c);
+		return result;
+	}
+}
+
+Result<int> MundyMath::squareRoot(int a) {
+
+	if (a == 0 || a == 1) {
+		return a;
+	}
+
+	int result = 1;
+	int lastAcceptedResult = 1;
+	for (int i = 0; result <= a; i++) {
+		result=i*i;
+
+		// Handle where a may go over for partial Square Roots, we are just going to floor.
+		if (result <= a) {
+			lastAcceptedResult = i;
+		}
+	}
+	Result<int> wrappedResult(lastAcceptedResult);
+	return wrappedResult;
 }
 
