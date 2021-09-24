@@ -4,6 +4,7 @@
 #include <string>
 #include <sstream>
 #include <type_traits>
+#include <iostream>
 
 using namespace std;
 
@@ -11,22 +12,21 @@ template <typename T>
 class Result {
 public:
 	T originalResult;
-	int base; // For string types specifically
 
 	Result(T originalResult) {
 		this->originalResult = originalResult;
 	}
-	
+
+	Result(string stringNum) {
+		this->originalResult = convertToInteger(stringNum);
+	}
+
 	T getResult() {
 		return originalResult;
 	};
 	
 	string toBinary() {
-		T n = originalResult;
-		
-		if (isStringBased()) {
-			n = std::stoi (originalResult, nullptr, 0);
-		}
+		int n = originalResult;
 		
 		int remainder; 
 		long binary = 0, i = 1;
@@ -37,15 +37,11 @@ public:
 			binary = binary + (remainder*i);
 			i = i*10;
 		}
-		return "0b" + to_string(binary);
+		return addSuffix(to_string(binary), "0b");
 	};
 	
 	string toOctal() {
-		T n = originalResult;
-
-		if (isStringBased()) {
-			n = std::stoi (originalResult, nullptr, 0);
-		}
+		int n = originalResult;
 
 		int remainder;
 		long octal = 0, i = 1;
@@ -56,37 +52,59 @@ public:
 			octal = octal + (remainder*i);
 			i = i*10;
 		}
-		return "0" + to_string(octal);
+		return addSuffix(to_string(octal), "0");
 	};
 	
 	string toHexadecimal() {
 		// Convert to int first!
-		int a = originalResult
-		std::stringstream stream;
-		stream << "0x" 
-		//<< std::setfill ('0') << std::setw(sizeof(T)*2) 
-		<< std::hex << a;
+		int a = originalResult;
+
+		stringstream stream;
+		if (a < 0) {
+			stream << "-0x" << std::hex << -a;
+		} else {
+			stream << "0x" << std::hex << a;
+		}
+
   		return stream.str();
 	};
+
 	
 	int toInteger() {
-		if (isStringBased()) {
-			return std::stoi (originalResult, nullptr, 0);
-		} else {
-			return originalResult;
-		}
+		return originalResult;
 	};
 	
 	double toDouble() {
-		if (isStringBased()) {
-			return std::stoi (originalResult, nullptr, 0);
-		} else {
-			return originalResult;
-		}
+		return originalResult;
 	};
-	
+
+	int convertToInteger(string a) {
+		if (a[0] == '0' && a[1] == 'b') {
+			a.erase(0, 2);
+			a.erase(0, min(a.find_first_not_of('0'), a.size() - 1));
+
+			return std::stoi(a, 0, 2);
+		} else if (a[0] == '-' && a[1] == '0' && a[2] == 'b') {
+			a.erase(1, 2);
+			a.erase(1, min(a.find_first_not_of('0'), a.size() - 1));
+
+			return std::stoi(a, 0, 2);
+		} else {
+				return std::stoi(a, nullptr, 0);
+		}
+	}
+
 	bool isStringBased() {
 		return std::is_same<T, string>::value;
+	}
+
+	string addSuffix(string num, string suffix) {
+		if (num[0] == '-') {
+			num.erase(0, 1);
+			return "-" + suffix + num;
+		} else {
+			return suffix + num;
+		}
 	}
   
 };

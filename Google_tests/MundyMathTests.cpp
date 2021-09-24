@@ -38,6 +38,7 @@ TEST(testMathSuite, subtractionTest) {
 	EXPECT_EQ(50, MundyMath::subtract(75, 25).getResult());
 	EXPECT_EQ(100, MundyMath::subtract(100.5, 0.5).getResult());
 	EXPECT_EQ(99.5, MundyMath::subtract(100, 0.5).getResult());
+	EXPECT_EQ(-10, MundyMath::subtract(100, 110).getResult());
 }
 
 TEST(testMathSuite, multiplicationTest) {
@@ -75,3 +76,100 @@ TEST(testMathSuite, powerTest) {
 	EXPECT_EQ(0, MundyMath::power(2, -4).getResult());
 }
 
+TEST(testMathSuite, conversionTest) {
+	Result resultInt(125);
+	Result resultDouble(125.5);
+	Result<int> resultBinary("0b1111000"); // 120
+	Result<int> resultOctal("0171"); // 121
+	Result<int> resultHexadecimal("0x7b"); // 123
+
+	// Int
+	EXPECT_EQ(125, resultInt.getResult());
+	EXPECT_EQ(125, resultInt.toInteger());
+	EXPECT_EQ(125.0, resultInt.toDouble());
+	EXPECT_EQ("0b1111101", resultInt.toBinary());
+	EXPECT_EQ("0175", resultInt.toOctal());
+	EXPECT_EQ("0x7d", resultInt.toHexadecimal());
+
+	// Double
+	EXPECT_EQ(125.5, resultDouble.getResult());
+	EXPECT_EQ(125, resultDouble.toInteger());
+	EXPECT_EQ(125.5, resultDouble.toDouble());
+	EXPECT_EQ("0b1111101", resultDouble.toBinary());
+	EXPECT_EQ("0175", resultDouble.toOctal());
+	EXPECT_EQ("0x7d", resultDouble.toHexadecimal());
+
+	// Binary
+	EXPECT_EQ(120, resultBinary.getResult());
+	EXPECT_EQ(120, resultBinary.toInteger());
+	EXPECT_EQ(120.0, resultBinary.toDouble());
+	EXPECT_EQ("0b1111000", resultBinary.toBinary());
+	EXPECT_EQ("0170", resultBinary.toOctal());
+	EXPECT_EQ("0x78", resultBinary.toHexadecimal());
+
+	// Octal
+	EXPECT_EQ(121, resultOctal.getResult());
+	EXPECT_EQ(121, resultOctal.toInteger());
+	EXPECT_EQ(121.0, resultOctal.toDouble());
+	EXPECT_EQ("0b1111001", resultOctal.toBinary());
+	EXPECT_EQ("0171", resultOctal.toOctal());
+	EXPECT_EQ("0x79", resultOctal.toHexadecimal());
+
+	// Hexadecimal
+	EXPECT_EQ(123, resultHexadecimal.getResult());
+	EXPECT_EQ(123, resultHexadecimal.toInteger());
+	EXPECT_EQ(123.0, resultHexadecimal.toDouble());
+	EXPECT_EQ("0b1111011", resultHexadecimal.toBinary());
+	EXPECT_EQ("0173", resultHexadecimal.toOctal());
+	EXPECT_EQ("0x7b", resultHexadecimal.toHexadecimal());
+}
+
+TEST(testMathSuite, negativeConversionTests) {
+	Result resultInt(-125);
+	Result resultDouble(-125.5);
+	Result<int> resultBinary("-0b1111000"); // 120
+	//Result<int> resultOctal("-0171"); // 121
+	Result<int> resultHexadecimal("-0x7b"); // 123
+
+	// Int
+	EXPECT_EQ(-125, resultInt.getResult());
+	EXPECT_EQ(-125, resultInt.toInteger());
+	EXPECT_EQ(-125.0, resultInt.toDouble());
+	EXPECT_EQ("-0b1111101", resultInt.toBinary());
+	EXPECT_EQ("-0175", resultInt.toOctal());
+	EXPECT_EQ("-0x7d", resultInt.toHexadecimal());
+
+	// Double
+	EXPECT_EQ(-125.5, resultDouble.getResult());
+	EXPECT_EQ(-125, resultDouble.toInteger());
+	EXPECT_EQ(-125.5, resultDouble.toDouble());
+	EXPECT_EQ("-0b1111101", resultDouble.toBinary());
+	EXPECT_EQ("-0175", resultDouble.toOctal());
+	EXPECT_EQ("-0x7d", resultDouble.toHexadecimal());
+
+	// Binary
+    EXPECT_EQ(-120, resultBinary.getResult());
+//	EXPECT_EQ(120, resultBinary.toInteger());
+//	EXPECT_EQ(120.0, resultBinary.toDouble());
+//	EXPECT_EQ("0b1111000", resultBinary.toBinary());
+//	EXPECT_EQ("0170", resultBinary.toOctal());
+//	EXPECT_EQ("0x78", resultBinary.toHexadecimal());
+//
+//	// Octal
+//	EXPECT_EQ(121, resultOctal.getResult());
+//	EXPECT_EQ(121, resultOctal.toInteger());
+//	EXPECT_EQ(121.0, resultOctal.toDouble());
+//	EXPECT_EQ("0b1111001", resultOctal.toBinary());
+//	EXPECT_EQ("0171", resultOctal.toOctal());
+//	EXPECT_EQ("0x79", resultOctal.toHexadecimal());
+//
+	// Hexadecimal
+	EXPECT_EQ(-123, resultHexadecimal.getResult());
+	EXPECT_EQ(-123, resultHexadecimal.toInteger());
+	EXPECT_EQ(-123.0, resultHexadecimal.toDouble());
+	EXPECT_EQ("-0b1111011", resultHexadecimal.toBinary());
+	EXPECT_EQ("-0173", resultHexadecimal.toOctal());
+	EXPECT_EQ("-0x7b", resultHexadecimal.toHexadecimal());
+
+
+}
