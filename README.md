@@ -45,13 +45,23 @@ Google tests are auto-discovered in the CMakeLists definition for CTests to run 
 
 First you need to add the following to your CMakeLists to include the project:
 ```
+# Fetch the Repository
 include(FetchContent)
 FetchContent_Declare(
         mundy_math
         # Specify the commit you depend on and update it regularly.
         URL https://github.com/jpschafer/mundy-math/archive/refs/heads/main.zip
 )
+
+# Make Repository Available to CMake
 FetchContent_MakeAvailable(mundy_math)
+
+# Now simply link against  as needed. Eg
+add_executable(<your_app_name> main.cpp)
+
+# Link Mundy Math to Executable
+target_link_libraries(<your_app_name> mundy_math_lib)
+target_include_directories(fluffy_succotash_app PUBLIC ${mundy_math_SOURCE_DIR})
 ```
 
 The MundyMath Library can then be easily consumed by including it into your cpp class:
